@@ -36,7 +36,7 @@ AlkAuswahl.Items = {
     [5] = {
         name = "Rotwein",
         preis = 60,
-        prop = "models/props_bar/bottle_01b.mdl",
+        prop = "models/props_bar/bottle_01a.mdl",
         color = Color(138, 18, 40),
         color_text = color_white
     }
