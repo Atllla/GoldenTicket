@@ -20,6 +20,13 @@ function ENT:Use(act, ply)
     self:EmitSound("npc/barnacle/barnacle_gulp2.wav")
     self:Remove()
     ply:ScreenFade(SCREENFADE.IN, Color(132, 241, 255, 44), 10, 30)
+
+    if ply:Health() + healthboost > 100  then -- Wenn die aktuelle Gesundheit + Healthboost größer als 100 ist, dann soll nur auf 100 gesetzt werden
+        ply:SetHealth(100)
+    else -- Sonst (wenn es nicht über 100 geht) soll Healthboost hinzuaddiert werden
+        ply:SetHealth(ply:Health() + healthboost)
+    end
+
     --ply:CreateRagdoll()
     --ply:Freeze(true)
     --Ragdoll = ply:GetRagdollEntity()
@@ -30,8 +37,4 @@ function ENT:Use(act, ply)
 
     net.Start("Clienteffekte") -- Networking, um Clientseitige Effekte zu triggern
     net.Send(ply)
-
---fadmin!!!
 end
---ply:SetColor(Color(211,211,211))
---ply:AddEffects(EF_ITEM_BLINK)

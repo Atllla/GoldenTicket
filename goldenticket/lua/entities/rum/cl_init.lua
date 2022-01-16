@@ -17,24 +17,18 @@ function ENT:Draw()
 end
 
 net.Receive("Clienteffekte", function(len)
+
     hook.Add("RenderScreenspaceEffects", "MotionBlur", function()
-        DS = 0.4
 
         DrawMotionBlur(0.1, 1, 0.01)
-        DrawSobel(DS)
+        DrawSobel(0.4)
         DrawColorModify(farbeffekte)
         DrawToyTown(10, ScrH() / 2) -- Verschwemmen vom Screen um die Mitte herum
-
-        timer.Simple(40, function()
-            while DS < 1 do
-            DrawSobel(DS)
-            DS = DS + 0.1
-            end
-            DrawSobel(1)
-        end)
 
         timer.Simple(50, function()
             hook.Remove("RenderScreenspaceEffects", "MotionBlur")
         end)
+
     end)
+
 end)

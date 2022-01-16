@@ -11,34 +11,39 @@ AlkAuswahl.Items = {
         prop = "models/props_bar/bottle_02a.mdl",
         color = Color(245, 179, 13),
         color_text = color_black,
+        healeffekt = 15
     },
     [2] = {
         name = "Rum",
         preis = 25,
         prop = "models/props_junk/glassjug01.mdl",
         color = Color(209, 62, 34),
-        color_text = color_white
+        color_text = color_white,
+        healeffekt = 5
     },
     [3] = {
         name = "Gin",
         preis = 40,
         prop = "models/props_bar/bottle_02c.mdl",
         color = Color(181, 208, 216),
-        color_text = color_black
+        color_text = color_black,
+        healeffekt = 15
     },
     [4] = {
         name = "Wodka",
         preis = 35,
         prop = "models/props_junk/GlassBottle01a.mdl",
         color = Color(27, 47, 172),
-        color_text = color_white
+        color_text = color_white,
+        healeffekt = 10
     },
     [5] = {
         name = "Rotwein",
         preis = 60,
         prop = "models/props_bar/bottle_01a.mdl",
         color = Color(138, 18, 40),
-        color_text = color_white
+        color_text = color_white,
+        healeffekt = 20
     }
 }
 
