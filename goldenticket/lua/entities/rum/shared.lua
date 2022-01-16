@@ -5,3 +5,4 @@ ENT.PrintName = "Rum"
 
 ENT.Spawnable = true
 
+healthboost = 5 -- Entscheidet, wieviel HP beim nutzen des Entities hinzugefügt werden soll
