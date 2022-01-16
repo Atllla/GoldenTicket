@@ -70,14 +70,29 @@ hook.Add("OnPlayerChat", "Altersabfrage", function(ply, nachricht, team)
 end)
 
 function AlkAuswahl.Open()
-Buttonabstand = 75 -- Variabel hier initialisiert, damit auch beim Zurück-clicken der Wert auf 75 zurückgesetzt wird
-
+    Buttonabstand = 75 -- Variabel hier initialisiert, damit auch beim Zurück-clicken der Wert auf 75 zurückgesetzt wird
+    hIconabstand = 75 -- Healthiconabstand
+    rIconAbstand = 75 -- Runningiconabstand
     local frame = vgui.Create("XeninUI.Frame", frame)
     frame:SetSize(500, 700)
     frame:Center()
     frame:SetTitle("Online-Alkohol-Bestellservice")
     frame:MakePopup()
     frame:MoveTo(ScrW() / 2 - 250, ScrH() / 2 - 300, 1)
+
+    for k, v in ipairs(AlkAuswahl.Items) do
+        local healthicon = vgui.Create("DImage", frame)
+        healthicon:SetImage(v.health)
+        healthicon:SetSize(50, 50)
+        healthicon:SetPos(15, 225 + hIconabstand)
+        hIconabstand = hIconabstand + 75
+        local runningicon = vgui.Create("DImage", frame)
+        runningicon:SetImage(v.speed)
+        runningicon:SetSize(50, 50)
+        runningicon:SetPos(150, 225 + rIconAbstand)
+        rIconAbstand = rIconAbstand + 75
+    end
+
     local avatar = vgui.Create("AvatarImage", frame)
     avatar:SetPos(5, 45)
     avatar:SetSize(75, 75)
@@ -113,7 +128,6 @@ Buttonabstand = 75 -- Variabel hier initialisiert, damit auch beim Zurück-click
 
         Button_Auswahl.DoClick = function()
             frame:Remove() -- entfernt den ersten Frame
-
             local frame2 = vgui.Create("XeninUI.Frame", frame2) -- erstellt neuen Frame
             frame2:SetTitle("Informationen zu: " .. v.name)
             frame2:SetSize(500, 700)
@@ -138,10 +152,10 @@ Buttonabstand = 75 -- Variabel hier initialisiert, damit auch beim Zurück-click
             icon:SetPos(-45, -100)
             icon:SetSize(600, 600)
             icon:SetModel(v.prop)
-            local avatar = vgui.Create("AvatarImage", frame2)
-            avatar:SetPos(5, 45)
-            avatar:SetSize(75, 75)
-            avatar:SetPlayer(LocalPlayer(), 64)
+            local avatar2 = vgui.Create("AvatarImage", frame2)
+            avatar2:SetPos(5, 45)
+            avatar2:SetSize(75, 75)
+            avatar2:SetPlayer(LocalPlayer(), 64)
             local beschreibung = vgui.Create("XeninUI.Panel", frame2)
             beschreibung:SetSize(500, 300)
             beschreibung:Center()
@@ -206,7 +220,6 @@ Buttonabstand = 75 -- Variabel hier initialisiert, damit auch beim Zurück-click
                     Button_ja.DoClick = function()
                         frame2:Remove()
                         framebestaetigung:Remove()
-
                         net.Start("Kaufen")
                         net.WriteInt(k, 5) -- Key des Buttons im Server weiterverwenden
                         net.WriteString("Kaufen")
@@ -338,7 +351,4 @@ Buttonabstand = 75 -- Variabel hier initialisiert, damit auch beim Zurück-click
             end
         end
     end
-
-
-
 end

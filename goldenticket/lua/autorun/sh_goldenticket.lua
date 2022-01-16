@@ -1,5 +1,6 @@
 AlkAuswahl = AlkAuswahl or {} -- Wenn die Table schonmal definiert wurde, soll sie nicht jedes mal erneut werden
 AlkAuswahl.Items = AlkAuswahl.Items or {}
+--AlkAuswahl.Icons = AlkAuswahl.Icons or {}
 
 rot = Color(255, 0, 0)
 grün = Color(0, 255, 0)
@@ -11,15 +12,21 @@ AlkAuswahl.Items = {
         prop = "models/props_bar/bottle_02a.mdl",
         color = Color(245, 179, 13),
         color_text = color_black,
-        healeffekt = 15
+        health = "materials/icons/hearticon.png",
+        speed = "materials/icons/runningicon.png"
+        -- healeffekt = 15                              SIEHE: Entity-sharedfiles
+        -- speedfaktor = 0.85                           SIEHE: Entity-sharedfiles
     },
     [2] = {
         name = "Rum",
-        preis = 25,
+        preis = 45,
         prop = "models/props_junk/glassjug01.mdl",
         color = Color(209, 62, 34),
         color_text = color_white,
-        healeffekt = 5
+        health = "materials/icons/hearticon.png",
+        speed = "materials/icons/runningicon.png"
+        -- healeffekt = 5
+        -- speedfaktor = 1.2
     },
     [3] = {
         name = "Gin",
@@ -27,7 +34,10 @@ AlkAuswahl.Items = {
         prop = "models/props_bar/bottle_02c.mdl",
         color = Color(181, 208, 216),
         color_text = color_black,
-        healeffekt = 15
+        health = "materials/icons/hearticon.png",
+        speed = "materials/icons/runningicon.png"
+        -- healeffekt = 15
+        -- speedfaktor = 0.85
     },
     [4] = {
         name = "Wodka",
@@ -35,7 +45,10 @@ AlkAuswahl.Items = {
         prop = "models/props_junk/GlassBottle01a.mdl",
         color = Color(27, 47, 172),
         color_text = color_white,
-        healeffekt = 10
+        health = "materials/icons/hearticon.png",
+        speed = "materials/icons/runningicon.png"
+        -- healeffekt = 10
+        -- speedfaktor = 1.1
     },
     [5] = {
         name = "Rotwein",
@@ -43,12 +56,20 @@ AlkAuswahl.Items = {
         prop = "models/props_bar/bottle_01a.mdl",
         color = Color(138, 18, 40),
         color_text = color_white,
-        healeffekt = 20
+        health = "materials/icons/hearticon.png",
+        speed = "materials/icons/runningicon.png"
+        -- healeffekt = 20
+        -- speedfaktor = 0.7
     }
 }
 
+--[[ AlkAuswahl.Icons = {
 
+    [1] = {health = "materials/icons/hearticon.png"},
 
+    [2] = {running = "materials/icons/runningicon.png"}
+
+} ]]
 
 
 
