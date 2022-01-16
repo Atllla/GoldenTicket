@@ -21,11 +21,20 @@ function ENT:Use(act, ply)
     self:Remove()
     ply:ScreenFade(SCREENFADE.IN, Color(132, 241, 255, 44), 10, 30)
 
-    if ply:Health() + healthboost > 100  then -- Wenn die aktuelle Gesundheit + Healthboost größer als 100 ist, dann soll nur auf 100 gesetzt werden
+    if ply:Health() + gin_healthboost > 100  then -- Wenn die aktuelle Gesundheit + Healthboost größer als 100 ist, dann soll nur auf 100 gesetzt werden
         ply:SetHealth(100)
     else -- Sonst (wenn es nicht über 100 geht) soll Healthboost hinzuaddiert werden
-        ply:SetHealth(ply:Health() + healthboost)
+        ply:SetHealth(ply:Health() + gin_healthboost)
     end
+
+    ply:SetRunSpeed(ply:GetRunSpeed() * gin_speedfaktor)
+    ply:SetWalkSpeed(ply:GetWalkSpeed() * gin_speedfaktor)
+
+    timer.Simple(60, function()
+        ply:SetRunSpeed(240) -- Standard DarkRP-Runspeed
+        ply:SetWalkSpeed(160) -- Standard DarkRP-Walkspeed
+    end)
+
 
     --ply:CreateRagdoll()
     --ply:Freeze(true)

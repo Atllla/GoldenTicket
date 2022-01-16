@@ -21,11 +21,19 @@ function ENT:Use(act, ply)
     self:Remove()
     ply:ScreenFade(SCREENFADE.IN, Color(168, 156, 44, 72), 10, 30)
 
-    if ply:Health() + healthboost > 100  then -- Wenn die aktuelle Gesundheit + Healthboost größer als 100 ist, dann soll nur auf 100 gesetzt werden
+    if ply:Health() + whiskey_healthboost > 100  then -- Wenn die aktuelle Gesundheit + Healthboost größer als 100 ist, dann soll nur auf 100 gesetzt werden
         ply:SetHealth(100)
     else -- Sonst (wenn es nicht über 100 geht) soll Healthboost hinzuaddiert werden
-        ply:SetHealth(ply:Health() + healthboost)
+        ply:SetHealth(ply:Health() + whiskey_healthboost)
     end
+
+    ply:SetRunSpeed(ply:GetRunSpeed() * whiskey_speedfaktor)
+    ply:SetWalkSpeed(ply:GetWalkSpeed() * whiskey_speedfaktor)
+
+    timer.Simple(60, function()
+        ply:SetRunSpeed(240) -- Standard DarkRP-Runspeed
+        ply:SetWalkSpeed(160) -- Standard DarkRP-Walkspeed
+    end)
 
     net.Start("Clienteffekte") -- Networking, um Clientseitige Effekte zu triggern
     net.Send(ply)

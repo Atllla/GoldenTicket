@@ -5,4 +5,5 @@ ENT.PrintName = "Wodka"
 
 ENT.Spawnable = true
 
-healthboost = 10 -- Entscheidet, wieviel HP beim nutzen des Entities hinzugefügt werden soll
+wodka_healthboost = 10 -- Entscheidet, wieviel HP beim nutzen des Entities hinzugefügt werden soll
+wodka_speedfaktor = 1.1 -- Faktor, um welchen man sich schneller bewegen soll
