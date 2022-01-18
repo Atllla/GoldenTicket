@@ -19,7 +19,7 @@ end
 function ENT:Use(act, ply)
     self:EmitSound("npc/barnacle/barnacle_gulp2.wav")
     self:Remove()
-    ply:ScreenFade(SCREENFADE.IN, Color(168, 156, 44, 72), 10, 30)
+    ply:ScreenFade(SCREENFADE.IN, Color(143, 44, 168, 72), 10, 30)
 
     if ply:Health() + rotwein_healthboost > 100  then -- Wenn die aktuelle Gesundheit + Healthboost größer als 100 ist, dann soll nur auf 100 gesetzt werden
         ply:SetHealth(100)
