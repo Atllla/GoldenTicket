@@ -13,7 +13,8 @@ AlkAuswahl.Items = {
         color = Color(245, 179, 13),
         color_text = color_black,
         health = "materials/icons/hearticon.png",
-        speed = "materials/icons/runningicon.png"
+        speed = "materials/icons/runningicon.png",
+        ent = "whiskey"
         -- healeffekt = 15                              SIEHE: Entity-sharedfiles
         -- speedfaktor = 0.85                           SIEHE: Entity-sharedfiles
     },
@@ -24,7 +25,8 @@ AlkAuswahl.Items = {
         color = Color(209, 62, 34),
         color_text = color_white,
         health = "materials/icons/hearticon.png",
-        speed = "materials/icons/runningicon.png"
+        speed = "materials/icons/runningicon.png",
+        ent = "rum"
         -- healeffekt = 5
         -- speedfaktor = 1.2
     },
@@ -35,7 +37,8 @@ AlkAuswahl.Items = {
         color = Color(181, 208, 216),
         color_text = color_black,
         health = "materials/icons/hearticon.png",
-        speed = "materials/icons/runningicon.png"
+        speed = "materials/icons/runningicon.png",
+        ent = "gin"
         -- healeffekt = 15
         -- speedfaktor = 0.85
     },
@@ -46,7 +49,8 @@ AlkAuswahl.Items = {
         color = Color(27, 47, 172),
         color_text = color_white,
         health = "materials/icons/hearticon.png",
-        speed = "materials/icons/runningicon.png"
+        speed = "materials/icons/runningicon.png",
+        ent = "wodka"
         -- healeffekt = 10
         -- speedfaktor = 1.1
     },
@@ -57,7 +61,8 @@ AlkAuswahl.Items = {
         color = Color(138, 18, 40),
         color_text = color_white,
         health = "materials/icons/hearticon.png",
-        speed = "materials/icons/runningicon.png"
+        speed = "materials/icons/runningicon.png",
+        ent = "rotwein"
         -- healeffekt = 20
         -- speedfaktor = 0.7
     }
