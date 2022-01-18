@@ -1,5 +1,6 @@
 mindestalter = 16
 
+
 hook.Add("OnPlayerChat", "Altersabfrage", function(ply, nachricht, team)
     nachricht = string.lower(nachricht) -- Setzt Nachricht in Kleinbuchstaben, sodass man auch die verschiedenen Buchstaben groß/kleinschreiben kann & es trotzdem ausgeführt wird
 
@@ -220,10 +221,17 @@ function AlkAuswahl.Open()
                     Button_ja.DoClick = function()
                         frame2:Remove()
                         framebestaetigung:Remove()
+
                         net.Start("Kaufen")
                         net.WriteInt(k, 5) -- Key des Buttons im Server weiterverwenden
                         net.WriteString("Kaufen")
                         net.SendToServer()
+
+                        if (ply:canAfford(v.preis)) then -- Wenn der Spieler das Produkt bezahlen kann, dann
+                            notification.AddLegacy("Du hast eine Flasche " .. v.name .. " gekauft.", 0, 10)
+                        else
+                            notification.AddLegacy("Du kannst dir kein " .. v.name .. " leisten.", 1, 10)
+                        end
                     end
                 end
             end
