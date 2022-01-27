@@ -1,12 +1,5 @@
 util.AddNetworkString("Kaufen")
 
-include("entities/whiskey/init.lua")
-include("entities/rum/init.lua")
-include("entities/gin/init.lua")
-include("entities/wodka/init.lua")
-include("entities/rotwein/init.lua")
-
-
 
 concommand.Add("geld", function(ply)
     ply:addMoney(100)
@@ -20,6 +13,10 @@ concommand.Add("getrunspeed", function(ply)
     print(ply:GetRunSpeed())
 end)
 
+concommand.Add("respawn", function(ply)
+    ply:Spawn()
+end)
+
 concommand.Add("broke", function(ply)
     ply:addMoney(-100)
 end)
@@ -31,7 +28,7 @@ net.Receive("Kaufen", function(len, ply)
     if (ply:canAfford(auswahl.preis)) then
         ply:addMoney(-auswahl.preis)
         function AlkSpawn()
-        entity = ents.Create(auswahl.ent) -- als "entity" wird im Folgenden das Spawnen des Entities bezeichnet
+        entity = ents.Create(auswahl.ent) -- als "entity" wird im Folgenden das Spawnen des Entities bezeichnet || die Entityfiles müssen nicht included werden!!!
         spawnpunkt = ply:GetEyeTrace() -- "spawnpunkt" ist dort, wo der Spieler hinschaut
         entity:Spawn()
         entity:SetPos(spawnpunkt.HitPos + Vector(0, 0, 10)) -- Das Spawnen des Entities soll 10 Units über dem Punkt sein, wo der Spieler hinschaut
