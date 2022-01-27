@@ -81,6 +81,55 @@ function AlkAuswahl.Open()
     frame:MakePopup()
     frame:MoveTo(ScrW() / 2 - 250, ScrH() / 2 - 300, 1)
 
+    local panel1 = vgui.Create("XeninUI.Panel", frame)
+    panel1:SetSize(500, 660)
+    panel1:SetPos(0, 40)
+
+
+    panel1.Paint = function(pnl, w, h) -- 2 Linien beim Avatar + Tabelle der Boosts
+        --surface.DrawOutlinedRect(0, 82.5, w, 576.5, 5)
+        surface.SetDrawColor(255, 255, 255)
+        surface.DrawRect(0, 0, 500, 1)
+        surface.DrawRect(0, 82.5, 500, 1)
+        surface.DrawRect(10, 247.5, 260, 1)
+        surface.DrawRect(10, 322.5, 260, 1)
+        surface.DrawRect(10, 397.5, 260, 1)
+        surface.DrawRect(10, 472.5, 260, 1)
+        surface.DrawRect(10, 547.5, 260, 1)
+        surface.DrawRect(10, 622.5, 260, 1)
+
+        surface.DrawRect(10, 247.5, 1, 375)
+        surface.DrawRect(145, 247.5, 1, 375)
+        surface.DrawRect(270, 247.5, 1, 375)
+
+--[[          for k, v in ipairs(AlkAuswahl.Items) do
+            healeffektabstand = 75
+            surface.SetTextColor(255, 255, 255)
+            surface.SetFont("CloseCaption_Normal")
+            surface.SetTextPos(72.5, 195 + healeffektabstand)
+            surface.DrawText("+ " .. v.healeffekt .. "%")
+            healeffektabstand = healeffektabstand + 75
+        end ]]
+
+        surface.SetTextColor(255, 255, 255)
+        surface.SetFont("CloseCaption_Normal")
+
+        surface.SetTextPos(72.5, 270) -- Whiskey        -- Wallah Billah, voll der billige Hase
+        surface.DrawText("+ 15%         - 15%")
+
+        surface.SetTextPos(72.5, 345) -- Rum
+        surface.DrawText("+ 5%          + 20%")
+
+        surface.SetTextPos(72.5, 420) -- Gin
+        surface.DrawText("+ 15%         - 15%")
+
+        surface.SetTextPos(72.5, 495) -- Wodka
+        surface.DrawText("+ 10%         + 10%")
+
+        surface.SetTextPos(72.5, 570) -- Rotwein
+        surface.DrawText("+ 20%         - 30%")
+    end
+
     for k, v in ipairs(AlkAuswahl.Items) do
         local healthicon = vgui.Create("DImage", frame)
         healthicon:SetImage(v.health)
