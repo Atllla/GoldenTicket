@@ -36,13 +36,18 @@ function ENT:Use(act, ply)
     end)
 
 
-    --ply:CreateRagdoll()
+--[[     ply:CreateRagdoll()
+    waffen = ply:GetWeapons()
+    ply:StripWeapons()
     --ply:Freeze(true)
-    --Ragdoll = ply:GetRagdollEntity()
-    --ply:SpectateEntity(Ragdoll)
-    --timer.Simple(3, function()
-    --ply:Freeze(false)
-    --end)
+    Ragdoll = ply:GetRagdollEntity()
+    ply:SpectateEntity(Ragdoll)
+    timer.Simple(3, function()
+    ply:Freeze(false)
+    end)
+    for k, v in ipairs (waffen) do
+    ply:Give(waffen)
+    end ]]
 
     net.Start("Clienteffekte") -- Networking, um Clientseitige Effekte zu triggern
     net.Send(ply)
