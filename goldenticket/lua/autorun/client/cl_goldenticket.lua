@@ -4,16 +4,14 @@ mindestalter = 16
 hook.Add("OnPlayerChat", "Altersabfrage", function(ply, nachricht, team)
     nachricht = string.lower(nachricht) -- Setzt Nachricht in Kleinbuchstaben, sodass man auch die verschiedenen Buchstaben groß/kleinschreiben kann & es trotzdem ausgeführt wird
 
-    -- Wenn die Nachricht "!alk" ist dann:
-    if (nachricht == "!alk") then
+    if (nachricht == "!alk") then -- Wenn die Nachricht "!alk" ist dann:
         ply:ChatPrint("Moin und herzlich willkommen im Online-Alkohol-Bestellservice!\nBitte beachten Sie, dass jeglicher Alkohol hier erst ab " .. mindestalter .. " Jahren legal erwerbbar ist. \n\nGeben Sie demnach bitte nun Ihr Alter ein.\n\n\n\n")
         -- suppressed die Nachricht, sodass man sein eigenes nicht im Chat sieht
 
         return true
     end
 
-    -- Wenn es sich bei der Nachricht um einen Groß/Kleinbruchstaben handelt, DANN:
-    if string.match(nachricht, "[%a]") then
+    if string.match(nachricht, "[%a]") then -- Wenn es sich bei der Nachricht um einen Groß/Kleinbruchstaben handelt, DANN:
         ply:ChatPrint("Du kannst nicht '" .. nachricht .. "' Jahre alt sein, du Vollidiot...")
 
         timer.Simple(1, function()
@@ -33,8 +31,7 @@ hook.Add("OnPlayerChat", "Altersabfrage", function(ply, nachricht, team)
         hook.Remove("OnPlayerChat", "Altersabfrage")
 
         return true
-    elseif string.match(nachricht, "[%d]") and tonumber(nachricht) >= 16 then
-        -- Wenn die nachricht eine Zahl beinhaltet, wird sie in ein integer verwandelt. Wenn diese Zahl größer/gleich 16 ist, DANN
+    elseif string.match(nachricht, "[%d]") and tonumber(nachricht) >= 16 then -- Wenn die nachricht eine Zahl beinhaltet, wird sie in ein integer verwandelt. Wenn diese Zahl größer/gleich 16 ist, DANN
         ply:ChatPrint("Gut, Sie sind mit " .. nachricht .. " Jahren alt genug für den Erwerb.")
 
         timer.Simple(5, function()
@@ -46,8 +43,7 @@ hook.Add("OnPlayerChat", "Altersabfrage", function(ply, nachricht, team)
         end)
 
         return true
-    elseif (mindestalter - nachricht ~= 1) then
-        -- Wenn Mindestalter - Zahl von nachricht ungleich 1 ist, DANN
+    elseif (mindestalter - nachricht ~= 1) then -- Wenn Mindestalter - Zahl von nachricht ungleich 1 ist, DANN
         ply:ChatPrint("Scheinbar sind Sie zu jung für den Erwerb von Alkohol. Dauert wohl noch " .. mindestalter - nachricht .. " Jahre, Kid")
 
         timer.Simple(1, function()
@@ -183,23 +179,27 @@ function AlkAuswahl.Open()
             frame2:SetSize(500, 700)
             frame2:Center()
             frame2:MoveTo(ScrW() / 2 - 250, ScrH() / 2 - 300, 1)
-            local panelh = vgui.Create("XeninUI.Panel", frame2) -- neues Panel im Panel, damit icon verschoben werden kann mit einem Rahmen
-            panelh:SetSize(500, 577.5)
-            panelh:SetPos(0, 122.5)
+            local panel2 = vgui.Create("XeninUI.Panel", frame2) -- neues Panel im Panel, damit icon verschoben werden kann mit einem Rahmen
+            panel2:SetSize(500, 660)
+            panel2:SetPos(0, 40) -- 82.5
 
-            panelh.Paint = function(pnl, w, h)
+            panel2.Paint = function(pnl, w, h)
                 surface.SetDrawColor(30, 30, 30)
                 surface.DrawRect(0, 0, w, h)
                 surface.SetDrawColor(v.color)
-                surface.DrawOutlinedRect(0, 0, w, h, 5)
+                surface.DrawOutlinedRect(0, 87.5, w, 572.5, 5)
                 surface.SetTextColor(v.color)
-                surface.SetTextPos(200, 200)
+                surface.SetTextPos(200, 307.5)
                 surface.SetFont("CloseCaption_Bold")
                 surface.DrawText("Preis: $" .. v.preis)
+
+                surface.SetDrawColor(255, 255, 255)
+                surface.DrawRect(0, 0, 500, 1)
+                surface.DrawRect(0, 82.5, 500, 1)
             end
 
-            local icon = vgui.Create("DModelPanel", panelh)
-            icon:SetPos(-45, -100)
+            local icon = vgui.Create("DModelPanel", panel2)
+            icon:SetPos(-45, -17.5)
             icon:SetSize(600, 600)
             icon:SetModel(v.prop)
             local avatar2 = vgui.Create("AvatarImage", frame2)
@@ -277,7 +277,7 @@ function AlkAuswahl.Open()
                         net.SendToServer()
 
                         if (ply:canAfford(v.preis)) then -- Wenn der Spieler das Produkt bezahlen kann, dann
-                            notification.AddLegacy("Du hast eine Flasche " .. v.name .. " gekauft.", 0, 10)
+                            notification.AddLegacy("Du hast eine Flasche " .. v.name .. " für $" .. v.preis .. " gekauft.", 0, 10)
                         else
                             notification.AddLegacy("Du kannst dir kein " .. v.name .. " leisten.", 1, 10)
                         end
@@ -288,7 +288,7 @@ function AlkAuswahl.Open()
             if k == 1 then
                 beschreibung.Paint = function(pnl, w, h)
                     surface.SetTextColor(v.color)
-                    surface.SetTextPos(209, 95)
+                    surface.SetTextPos(209, 120)
                     surface.SetFont("CloseCaption_Bold")
                     surface.DrawText(v.name)
                     surface.SetTextColor(color_white)
@@ -312,7 +312,7 @@ function AlkAuswahl.Open()
             elseif k == 2 then
                 beschreibung.Paint = function(pnl, w, h)
                     surface.SetTextColor(v.color)
-                    surface.SetTextPos(230, 95)
+                    surface.SetTextPos(230, 120)
                     surface.SetFont("CloseCaption_Bold")
                     surface.DrawText(v.name)
                     surface.SetTextColor(color_white)
@@ -336,7 +336,7 @@ function AlkAuswahl.Open()
             elseif k == 3 then
                 beschreibung.Paint = function(pnl, w, h)
                     surface.SetTextColor(v.color)
-                    surface.SetTextPos(237.5, 95)
+                    surface.SetTextPos(237.5, 120)
                     surface.SetFont("CloseCaption_Bold")
                     surface.DrawText(v.name)
                     surface.SetTextColor(color_white)
@@ -360,7 +360,7 @@ function AlkAuswahl.Open()
             elseif k == 4 then
                 beschreibung.Paint = function(pnl, w, h)
                     surface.SetTextColor(v.color)
-                    surface.SetTextPos(215, 95)
+                    surface.SetTextPos(215, 120)
                     surface.SetFont("CloseCaption_Bold")
                     surface.DrawText(v.name)
                     surface.SetTextColor(color_white)
@@ -384,7 +384,7 @@ function AlkAuswahl.Open()
             elseif k == 5 then
                 beschreibung.Paint = function(pnl, w, h)
                     surface.SetTextColor(v.color)
-                    surface.SetTextPos(210, 95)
+                    surface.SetTextPos(210, 120)
                     surface.SetFont("CloseCaption_Bold")
                     surface.DrawText(v.name)
                     surface.SetTextColor(color_white)
