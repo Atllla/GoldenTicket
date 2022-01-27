@@ -14,9 +14,9 @@ AlkAuswahl.Items = {
         color_text = color_black,
         health = "materials/icons/hearticon.png",
         speed = "materials/icons/runningicon.png",
-        ent = "whiskey"
-        -- healeffekt = 15                              SIEHE: Entity-sharedfiles
-        -- speedfaktor = 0.85                           SIEHE: Entity-sharedfiles
+        ent = "whiskey",
+        healeffekt = 15,          -- HAT KEINEN EINFLUSS --                    --SIEHE: Entity-sharedfiles
+        speedfaktor = 0.85           -- HAT KEINEN EINFLUSS --                    --SIEHE: Entity-sharedfiles
     },
     [2] = {
         name = "Rum",
@@ -26,9 +26,9 @@ AlkAuswahl.Items = {
         color_text = color_white,
         health = "materials/icons/hearticon.png",
         speed = "materials/icons/runningicon.png",
-        ent = "rum"
-        -- healeffekt = 5
-        -- speedfaktor = 1.2
+        ent = "rum",
+        healeffekt = 5,
+        speedfaktor = 1.2
     },
     [3] = {
         name = "Gin",
@@ -38,9 +38,9 @@ AlkAuswahl.Items = {
         color_text = color_black,
         health = "materials/icons/hearticon.png",
         speed = "materials/icons/runningicon.png",
-        ent = "gin"
-        -- healeffekt = 15
-        -- speedfaktor = 0.85
+        ent = "gin",
+        healeffekt = 15,
+        speedfaktor = 0.85
     },
     [4] = {
         name = "Wodka",
@@ -50,9 +50,9 @@ AlkAuswahl.Items = {
         color_text = color_white,
         health = "materials/icons/hearticon.png",
         speed = "materials/icons/runningicon.png",
-        ent = "wodka"
-        -- healeffekt = 10
-        -- speedfaktor = 1.1
+        ent = "wodka",
+        healeffekt = 10,
+        speedfaktor = 1.1
     },
     [5] = {
         name = "Rotwein",
@@ -62,9 +62,9 @@ AlkAuswahl.Items = {
         color_text = color_white,
         health = "materials/icons/hearticon.png",
         speed = "materials/icons/runningicon.png",
-        ent = "rotwein"
-        -- healeffekt = 20
-        -- speedfaktor = 0.7
+        ent = "rotwein",
+        healeffekt = 20,
+        speedfaktor = 0.7
     }
 }
 
@@ -75,9 +75,3 @@ AlkAuswahl.Items = {
     [2] = {running = "materials/icons/runningicon.png"}
 
 } ]]
-
-
-
-
-
-
